@@ -30,42 +30,75 @@
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_${scala.binary.version}</artifactId>
-            <version>2.4.2</version>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>2.4.4</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_${scala.binary.version}</artifactId>
-            <version>2.4.2</version>
+            <version>2.4.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_2.11</artifactId>
+            <version>2.4.4</version>
         </dependency>
         <dependency>
             <groupId>io.delta</groupId>
             <artifactId>delta-core_2.11</artifactId>
             <version>0.3.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-minicluster -->
+<!--
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-minicluster</artifactId>
+            <version>3.2.1</version>
+            <scope>test</scope>
+        </dependency>
+-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-streaming -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_2.11</artifactId>
+            <version>2.4.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.scalaz.stream/scalaz-stream -->
+        <!--
+                <dependency>
+                    <groupId>org.scalaz.stream</groupId>
+                    <artifactId>scalaz-stream_2.12</artifactId>
+                    <version>0.8a</version>
+                </dependency>
+        -->
+        <dependency>
+            <groupId>org.scalaz.stream</groupId>
+            <artifactId>scalaz-stream_2.11</artifactId>
+            <version>0.8.6</version>
+        </dependency>
 
         <!-- Test -->
 
+<!--
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>2.4.4</version>
             <scope>test</scope>
+            <type>test-jar</type>
+            <exclusions>
+                <exclusion>  &lt;!&ndash; declare the exclusion here &ndash;&gt;
+                    <groupId>org.scalaz.stream</groupId>
+                    <artifactId>scalaz-stream_2.11</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.specs2</groupId>
-            <artifactId>specs2_2.11</artifactId>
-            <version>2.4.15</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.specs2</groupId>
-            <artifactId>specs2-junit_2.11</artifactId>
-            <version>3.7.2</version>
-            <scope>test</scope>
-        </dependency>
+-->
+
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.11</artifactId>

@@ -226,8 +226,34 @@ class CDCSpec extends FlatSpec with Matchers with GivenWhenThen with SharedSpark
 
   "cdc implemetation " should "read cdc from a csv file and apply them to Hive table" in {
 
+    import org.apache.spark.sql.functions.datediff
 
 
+  }
+
+  "" should " " in {
+    val spark = sparkSession
+    import spark.implicits._
+
+    val tolong = udf((value: String) => value.split(",").map(_.toLong))
+    val toSequdf = udf((value: String) => Array(value))
+    val vide = udf((value: String) => Array())
+    //.write
+    //.json("C:\\Users\\EliteBook\\Desktop\\BIG DATA\\jasser\\Nouveau dossier\\data_final\\one.json")
+
+    val data = spark.read.json("C:\\Users\\EliteBook\\Desktop\\BIG DATA\\jasser\\Nouveau dossier\\data\\one.json")
+      .filter('_corrupt_record isNull)
+      .withColumn("tag", monotonicallyIncreasingId)
+      .withColumn("context", vide(col("answer")))
+      .withColumn("question", toSequdf(col("question")))
+      .withColumn("answer", toSequdf(col("answer")))
+      .withColumnRenamed("question", "patterns")
+      .withColumnRenamed("answer", "responses")
+      .select('tag, 'patterns, 'responses, 'context)
+      .write
+      .mode("overwrite")
+      .json("C:\\Users\\EliteBook\\Desktop\\BIG DATA\\jasser\\Nouveau dossier\\data_final")
+      //.show()
 
 
   }
