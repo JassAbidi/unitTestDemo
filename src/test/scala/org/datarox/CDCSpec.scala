@@ -258,5 +258,10 @@ class CDCSpec extends FlatSpec with Matchers with GivenWhenThen with SharedSpark
 
   }
 
+  "merge commqnd with schema evolution" should " " in {
+
+    
+  }
+
 
 }

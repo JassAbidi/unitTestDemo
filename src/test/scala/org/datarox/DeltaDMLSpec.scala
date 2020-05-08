@@ -97,7 +97,7 @@ class DeltaDMLSpec extends FlatSpec with Matchers with GivenWhenThen with Shared
       .join(customerTable.toDF.as("customers"), Seq("customerId"))
       .where(insertCondition)
       .selectExpr("NULL as mergeKey ", "customerId", "corrections.address", "corrections.effectiveDate", "customers.endDate")
-      .transform(Rules.tagAsCurrent)
+      //.transform(Rules.tagAsCurrent)
 
     val stagingUpdates = customerstoInsert
       .union(corrections.toDF().as("corrections").selectExpr("corrections.customerId as mergeKey", "corrections.*", "NULL as endDate", "NULL as current"))

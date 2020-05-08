@@ -298,8 +298,8 @@ class FileIndexSpec extends FlatSpec with Matchers with GivenWhenThen {
     */
 
 
-    OptimizedTable.refreshTable("default", "person").foreach(println)
-    println(OptimizedTable.refreshTable("default", "person").isEmpty)
+    //OptimizedTable.refreshTable("default", "person").foreach(println)
+    //println(OptimizedTable.refreshTable("default", "person").isEmpty)
   }
 
 }

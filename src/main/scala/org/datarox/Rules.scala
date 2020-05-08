@@ -1,27 +1,10 @@
 package org.datarox
 
-import org.apache.spark
-import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.apache.spark.sql.functions._
-
+import org.apache.spark.sql.DataFrame
 
 object Rules {
 
-  def filterOnAge(df: DataFrame, age: Int): DataFrame = {
-    df.filter(col("age") <= age)
+  def getEmployeeBySalary(employeesData: DataFrame, maxSalary: Long): DataFrame = {
+    employeesData.filter(employeesData.col("salary") <= maxSalary)
   }
-
-  def tagAsCurrent(df: DataFrame): DataFrame = {
-    df.withColumn("current", when(col("endDate") isNull, true).otherwise(false))
-  }
-
-  def skipHeader (dataframe: DataFrame, headerFirstColumn: String, firstColumnName: String)(implicit  spark :SparkSession ) :DataFrame = {
-    import spark.implicits._
-    dataframe.filter(col(firstColumnName) =!= headerFirstColumn)
-  }
-
-/*  def selectUpdateMap(): Map[String, String]={
-    when()
-  }*/
-
 }

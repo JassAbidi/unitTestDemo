@@ -9,7 +9,15 @@ object App {
     import spark.implicits._
     val df1 = (1 to 100).toDF("id")
     val df2 = (10 to 50).toDF("id")
-    df1.localCheckpoint().filter($"id" < 50 ).rdd.collect
+    df1
+      .filter($"id" < 50 )
+      .join(df2, Seq("id"), "left")
+      .count
+
+    val result = spark.sql("select * from ...")
+
+    result.show(10)
+
   }
 
 }

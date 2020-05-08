@@ -70,7 +70,7 @@ object OptimizedTable {
   }
 
   def fromName(name: String)(implicit spark: SparkSession): OptimizedTable = {
-    refreshTable()
+    //refreshTable()
     new OptimizedTable(spark.read.table(name), getTableLocation(name))
   }
 
@@ -81,6 +81,7 @@ object OptimizedTable {
       .toString
   }
 
+/*
   def refreshTable(name : String, db: String, table: String)(implicit spark: SparkSession) = {
     val db = name.split(".")
     val tableMeta = spark.sharedState.externalCatalog.getTable(db, table)
@@ -88,6 +89,7 @@ object OptimizedTable {
       spark.sql(s"msck repair table $db.$table")
     }
   }
+*/
 }
 
 
